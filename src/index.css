@@ -1,0 +1,274 @@
+:root {
+    --blanco: #FFFFFF;
+    --negro: #111111;
+    --gris: #343A40;
+    --azul: #0076bd;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    background-image: url(./img/page-turner.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 900;
+    margin: 1rem 0 4rem 0;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 3rem;
+    margin: 0%;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-family: 'Open Sans', sans-serif;
+    color: #0076bd;
+    font-size: 2rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.contenedor {
+    margin: 0 auto;
+    width: 90%;
+}
+
+
+/*Header*/
+
+.header {
+    background-image: url(./img/plantillaCabecera.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: cover;
+    padding: 4rem;
+}
+
+.textos-header {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    text-align: right;
+    color: var(--blanco);
+    padding: 0;
+}
+
+.textos p {
+    margin: 0;
+    line-height: 1;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: flex-start;
+    width: 100%;
+    background-color: #f4f4f4;
+}
+
+.link {
+    padding: 1.1rem;
+}
+
+
+.link-a {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 2rem;
+    transition: background-color 300ms;
+    color: var(--negro);
+    padding: 2rem;
+}
+
+.nav a:hover {
+    background-color: var(--azul);
+    color: var(--blanco)
+}
+
+/*
+.not-active { 
+    background-color: #737c85;
+    pointer-events: none; 
+    cursor: default; 
+    color: var(--blanco);
+} 
+*/
+
+.a-stay {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 2rem;
+    transition: background-color 300ms;
+    padding: 2rem;
+    background-color: var(--azul);
+    color: var(--blanco);
+}
+
+/*Contenido Body*/
+.titulo-body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 900;
+    font-size: 2.5rem;
+    padding: 3rem;
+    margin: 2rem;
+}
+
+
+/*Footer*/
+.contenedor-body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 1.7rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border: 0.5px solid;
+    border-color: #dedede;
+    margin-bottom: 8rem;
+}
+
+.imagen {
+    margin: 0;
+    width: 20rem;
+    padding: 3rem;
+}
+
+.footer {
+    background-image: url(./img/plantillaPie.png);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 1rem;
+}
+
+.texto-footer {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    color: var(--blanco);
+    text-align: left;
+}
+
+.contenedor-login {
+    background-image: url(./img/layered-waves-haikei.svg);
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 30rem;
+    margin-bottom: 3rem;
+    background-size: cover;
+}
+
+.login-card {
+    width: 30%;
+    padding: 3rem 7rem 4.4rem;
+    border-radius: 2.4rem;
+    background-color: var(--blanco);
+    text-align: left;
+}
+
+/*Form*/
+.contenedor-form {
+    display: flex;
+    justify-content: center;
+
+    padding: 30rem;
+}
+
+.form-card {
+    width: 50%;
+    height: 50%;
+    padding: 3rem 7rem 4.4rem;
+    border-radius: 2.4rem;
+    background-color: var(--blanco);
+    text-align: left;
+}
+
+.form-card p {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+.form-card label {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+.form {
+    justify-content: center;
+    padding: 2rem;
+}
+
+.form input {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    width: 100%;
+    height: 5.6rem;
+    padding: 0 1.6rem;
+    margin: 1rem;
+    border-radius: 0.8rem;
+    border-color: #0076bd;
+}
+
+.button-form {
+
+    height: 6rem;
+    border-radius: 2rem;
+    background-color: #0076bd;
+    color: var(--blanco);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    padding: 1.5rem;
+
+}
+
+.button-form:hover {
+    background-color: #449acf;
+}
+
+/*Alerta Style*/
+
+.alerta-style {
+    background-color: #f8acdf;
+
+}
+
+.strong-alert {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 900;
+    color: #fa002a;
+
+}
+
+.span-alert {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 900;
+    color: #fa002a;
+}
