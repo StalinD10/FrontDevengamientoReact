@@ -4,8 +4,10 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Layout from "./components/Layout"
 import NuevoDocente, { action as nuevoDocenteAction } from "./pages/NuevoDocente"
+import NuevoPlanDevengamiento, { action as nuevoPlanAction } from './pages/NuevoPlanDevengamiento'
+import NuevaActividadDevengamiento, { action as nuevaActividadAction } from './pages/NuevaActividadDevengamiento'
 import Index from './pages'
-import PlanDevengamiento from './pages/PlanDevengamiento'
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,12 +24,18 @@ const router = createBrowserRouter([
       },
       {
         path: "/planDevengamiento",
-        element: <PlanDevengamiento />
+        element: <NuevoPlanDevengamiento />,
+        action: nuevoPlanAction
+      },
+      {
+        path: "/nuevaActividad",
+        element: <NuevaActividadDevengamiento />,
+        action: nuevaActividadAction
       },
 
     ]
   },
- 
+
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(

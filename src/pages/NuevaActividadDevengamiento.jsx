@@ -1,28 +1,28 @@
-import FormularioNuevoDocente from "../components/FormularioNuevoDocente"
+import FormularioNuevaActividad from "../components/FormularioNuevaActividad"
 import { Form, redirect } from "react-router-dom";
-import { agregarDocente } from "../api/nuevoDocente";
+import { agregarNuevaActividad } from "../api/nuevaActividad";
 
 export async function action({ request }) {
     const formData = await request.formData()
     const datos = Object.fromEntries(formData)
     console.log(datos);
-    await agregarDocente(datos);
+    await agregarNuevaActividad(datos);
     return redirect("/");
 }
 
-function NuevoDocente() {
-
+function NuevaActividadDevengamiento() {
     return (
+
         <div>
             <Form method="post">
-
-                <FormularioNuevoDocente />
+                <FormularioNuevaActividad />
                 <div className="contenedor-button">
                     <input type="submit" className="button-form" value="Registrar" />
                 </div>
             </Form>
         </div>
+
     )
 }
 
-export default NuevoDocente
+export default NuevaActividadDevengamiento
