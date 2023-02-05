@@ -6,6 +6,10 @@ import Layout from "./components/Layout"
 import NuevoDocente, { action as nuevoDocenteAction } from "./pages/NuevoDocente"
 import NuevoPlanDevengamiento, { action as nuevoPlanAction } from './pages/NuevoPlanDevengamiento'
 import NuevaActividadDevengamiento, { action as nuevaActividadAction } from './pages/NuevaActividadDevengamiento'
+import MostrarPlanes from './components/MostrarPlanes'
+import MostrarActividades from './components/MostrarActividades'
+import MostrarDatosDocente from './components/MostrarDatosDocente'
+import ModalActividadDevengamiento from './components/ModalActividadDevengamiento'
 import Index from './pages'
 
 const router = createBrowserRouter([
@@ -34,7 +38,24 @@ const router = createBrowserRouter([
       },
 
     ]
+
   },
+  {
+    path: "/mostrarPlanes",
+    element: <MostrarPlanes />
+  },
+  {
+    path: "/mostrarActividades",
+    element: <MostrarActividades />
+  },
+  {
+    path: "/datosDocente",
+    element: <MostrarDatosDocente />
+  },
+  {
+    path: "/modalActividad",
+    element: <ModalActividadDevengamiento />
+  }
 
 ])
 

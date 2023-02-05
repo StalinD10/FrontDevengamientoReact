@@ -57,10 +57,8 @@ img {
     display: block;
 }
 
-.contenedor {
-    margin: 0 auto;
-    width: 90%;
-}
+
+
 
 
 /*Header*/
@@ -88,18 +86,10 @@ img {
 }
 
 .nav {
-    display: flex;
-    flex-direction: row;
-
-    justify-content: flex-start;
+    display: block;
     width: 100%;
     background-color: #f4f4f4;
 }
-
-.link {
-    padding: 1.1rem;
-}
-
 
 .link-a {
     font-family: 'Open Sans', sans-serif;
@@ -108,11 +98,44 @@ img {
     transition: background-color 300ms;
     color: var(--negro);
     padding: 2rem;
+    background-color: #f4f4f4;
+    max-height: 100%;
+}
+
+.contenedor-nav {
+    background-color: var(--blanco);
+    margin: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+.nav li a {
+    display: block;
 }
 
 .nav a:hover {
     background-color: var(--azul);
     color: var(--blanco)
+}
+
+.nav li a:hover {
+    background-color: #0076bd;
+}
+
+.nav>li {
+    float: left;
+}
+
+.nav li ul {
+    display: none;
+    position: absolute;
+}
+
+.nav li:hover>ul {
+    display: block;
 }
 
 /*
@@ -209,17 +232,26 @@ img {
 /*Form*/
 .contenedor-form {
     display: flex;
+    flex-direction: row;
     justify-content: center;
-    padding: 20rem 20rem 0rem;
+    padding: 15rem 60rem 0rem;
 }
 
 .form-card {
-    width: 50%;
-    height: 50%;
-    padding: 3rem 7rem 4.4rem;
-    border-radius: 2.4rem;
-    background-color: var(--blanco);
-    text-align: left;
+    max-width: 60rem;
+}
+
+@media (min-width: 768px) {
+    .form-card {
+        min-width: 60rem;
+        min-height: 50%;
+        padding: 3rem 7rem 4.4rem;
+        border-radius: 2.4rem;
+        background-color: var(--blanco);
+        text-align: left;
+        margin: 0;
+
+    }
 }
 
 .form-card p {
@@ -235,8 +267,8 @@ img {
 
 
 .form {
-    justify-content: center;
     padding: 2rem;
+
 }
 
 .form input {
@@ -263,9 +295,9 @@ img {
 
 .contenedor-button {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 3rem;
+    flex-direction: row;
+    justify-content: center;
+    padding: 2rem;
 }
 
 .button-form {
@@ -303,4 +335,34 @@ img {
     font-family: 'Open Sans', sans-serif;
     font-weight: 900;
     color: #fa002a;
+}
+
+.table {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 300;
+    width: 74%;
+    height: 60%;
+    padding: 3rem 7rem 4.4rem;
+    border-radius: 2.4rem;
+    background-color: var(--blanco);
+    text-align: left;
+}
+
+.table-head {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.table-row th {
+    padding-right: 3rem;
+}
+
+.table-row td {
+    padding: 2rem;
+}
+
+.contenedor-table {
+    padding: 12rem 6rem 8rem 6rem;
 }

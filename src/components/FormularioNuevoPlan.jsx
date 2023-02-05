@@ -4,7 +4,7 @@ function FormularioNuevoPlan() {
             <link
                 href="https://fonts.googleapis.com/css2?family=Lato:wght@400;900&family=Open+Sans:ital,wght@0,300;0,700;1,400&family=Playfair+Display:wght@700&family=Raleway:wght@300&family=Roboto:wght@400;700;900&display=swap"
                 rel="stylesheet"></link>
-            <div className="contendor">
+            
                 <div className="contenedor-form">
                     <div className="form-card">
                         <h3>Ingresar el Nuevo Plan de Devengamiento</h3>
@@ -16,7 +16,7 @@ function FormularioNuevoPlan() {
                         </div>
                     </div>
                 </div>
-            </div>
+           
         </div>
     )
 }

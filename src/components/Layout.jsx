@@ -18,14 +18,36 @@ function Layout() {
           </div>
         </header>
       </header>
-      <div className="nav">
-        <Link className={`${location.pathname === "/PlanDevengamiento" ? "a-stay" : "link-a"} link `} to="PlanDevengamiento"> Plan Devengamiento </Link>
-        <Link className={`${location.pathname === "/nuevaActividad" ? "a-stay" : "link-a"} not-active`} to="nuevaActividad">Actividad de Devengamiento </Link>
-        <Link className={`${location.pathname === "" ? "a-stay" : "link-a"}`} to="#">Devengamiento</Link>
-        <Link className={`${location.pathname === "" ? "a-stay" : "link-a"}`} to="#">Información</Link>
-        <Link className={`${location.pathname === "/" ? "a-stay" : "link-a"}`} to="#">Ver actividades de devengamiento</Link>
+      <div className="contenedor-nav">
+        <ul className="nav">
+          <li>
+          <Link className={`${location.pathname === "/datosDocente"  ? "a-stay" : "link-a"} not-active `} to="datosDocente"> Datos Docente </Link>
+          </li>
+          <li>
+            <Link className={`${location.pathname === "/planDevengamiento"  ? "a-stay" : "link-a"} not-active `} > Plan devengamiento </Link>
+            <ul>
+              <li>
+                <Link className={`${location.pathname === "/planDevengamiento" ? "a-stay" : "link-a"} not-active`} to="planDevengamiento"> Insertar Plan de Devengamiento</Link>
+              </li>
+              <li>
+                <Link className={`${location.pathname === "/mostrarPlanes" ? "a-stay" : "link-a"} not-active`} to="mostrarPlanes"> Mostrar Planes </Link>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <Link className={`${location.pathname === "/nuevaActividad" ? "a-stay" : "link-a"} `} >Actividades de Devengamiento </Link>
+            <ul>
+              <li>
+              <Link className={`${location.pathname === "/nuevaActividad" ? "a-stay" : "link-a"} `} to="nuevaActividad">Agregar Actividad</Link>   
+              </li>
+              <li>
+              <Link className={`${location.pathname === "/mostrarActividades" ? "a-stay" : "link-a"} `} to="mostrarActividades">Mostrar Actividades </Link>
+              </li>
+            </ul>
+          </li>
+                    
+        </ul>
       </div>
-
       <Outlet />
       <footer>
         <div className="footer">
