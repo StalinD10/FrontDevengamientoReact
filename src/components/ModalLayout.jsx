@@ -9,7 +9,7 @@ function ModalActividadDevengamiento({ children, estado, cambiarEstado }) {
                             href="https://fonts.googleapis.com/css2?family=Lato:wght@400;900&family=Open+Sans:ital,wght@0,300;0,700;1,400&family=Playfair+Display:wght@700&family=Raleway:wght@300&family=Roboto:wght@400;700;900&display=swap"
                             rel="stylesheet"></link>
                         <EncabezadoModal>
-                            <h3 >Elije el tipo de actividad</h3>
+                            <h3 >Ingrese datos o Seleccione</h3>
                         </EncabezadoModal>
                         <BotonCerrar onClick={() => cambiarEstado(false)}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">

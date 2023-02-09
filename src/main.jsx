@@ -6,10 +6,12 @@ import Layout from "./components/Layout"
 import NuevoDocente, { action as nuevoDocenteAction } from "./pages/NuevoDocente"
 import NuevoPlanDevengamiento, { action as nuevoPlanAction } from './pages/NuevoPlanDevengamiento'
 import NuevaActividadDevengamiento, { action as nuevaActividadAction } from './pages/NuevaActividadDevengamiento'
-import MostrarPlanes from './components/MostrarPlanes'
+import MostrarPlanes, {loader as loaderPlanes}  from './components/MostrarPlanes'
 import MostrarActividades from './components/MostrarActividades'
 import MostrarDatosDocente from './components/MostrarDatosDocente'
-import ModalActividadDevengamiento from './components/ModalActividadDevengamiento'
+import ModalActividadDevengamiento from './components/ModalLayout'
+import Login, {action as loginAction} from './pages/Login'
+import EditarDocente, { action as editarDocenteAction} from './pages/EditarDocente'
 import Index from './pages'
 
 const router = createBrowserRouter([
@@ -35,26 +37,39 @@ const router = createBrowserRouter([
         path: "/nuevaActividad",
         element: <NuevaActividadDevengamiento />,
         action: nuevaActividadAction
-      },
-
+      }
+      
     ]
 
   },
   {
-    path: "/mostrarPlanes",
-    element: <MostrarPlanes />
+    path: "/iniciarSesion",
+    element: <Login />,
+    action: loginAction
+  },
+  {
+    path: "/mostrarPlanes/:docenteId",
+    element: <MostrarPlanes />,
+    loader: loaderPlanes
   },
   {
     path: "/mostrarActividades",
     element: <MostrarActividades />
+    
   },
   {
-    path: "/datosDocente",
-    element: <MostrarDatosDocente />
+    path: "/datosDocente/:docenteId/",
+    element: <MostrarDatosDocente />,
+    
   },
   {
     path: "/modalActividad",
     element: <ModalActividadDevengamiento />
+  },
+  {
+    path: "/docente/:docenteId/editar",
+    element: <EditarDocente />,
+    action: editarDocenteAction
   }
 
 ])

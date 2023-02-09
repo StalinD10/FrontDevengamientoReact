@@ -1,6 +1,6 @@
 import { Outlet, Link, useLocation } from "react-router-dom"
 function Layout() {
-  const location = useLocation();
+   const location = useLocation();
   return (
     <div>
       <header>
@@ -21,7 +21,7 @@ function Layout() {
       <div className="contenedor-nav">
         <ul className="nav">
           <li>
-          <Link className={`${location.pathname === "/datosDocente"  ? "a-stay" : "link-a"} not-active `} to="datosDocente"> Datos Docente </Link>
+          <Link className={`${location.pathname === "/datosDocente/:docenteId/"  ? "a-stay" : "link-a"} not-active `} to= "datosDocente/${id}"> Datos Docente </Link>
           </li>
           <li>
             <Link className={`${location.pathname === "/planDevengamiento"  ? "a-stay" : "link-a"} not-active `} > Plan devengamiento </Link>
@@ -30,7 +30,7 @@ function Layout() {
                 <Link className={`${location.pathname === "/planDevengamiento" ? "a-stay" : "link-a"} not-active`} to="planDevengamiento"> Insertar Plan de Devengamiento</Link>
               </li>
               <li>
-                <Link className={`${location.pathname === "/mostrarPlanes" ? "a-stay" : "link-a"} not-active`} to="mostrarPlanes"> Mostrar Planes </Link>
+                <Link className={`${location.pathname === "/mostrarPlanes" ? "a-stay" : "link-a"} not-active`} to="mostrarPlanes/${id}"> Mostrar Planes </Link>
               </li>
             </ul>
           </li>

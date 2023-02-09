@@ -5,7 +5,7 @@ import { agregarDocente } from "../api/nuevoDocente";
 export async function action({ request }) {
     const formData = await request.formData()
     const datos = Object.fromEntries(formData)
-    console.log(datos);
+    console.log(datosjajaj);
     await agregarDocente(datos);
     return redirect("/");
 }

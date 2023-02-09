@@ -1,25 +1,30 @@
 import FormularioNuevaActividad from "../components/FormularioNuevaActividad"
 import { Form, redirect } from "react-router-dom";
 import { agregarNuevaActividad } from "../api/nuevaActividad";
-import { useState } from "react";
-import ModalActividadDevengamiento from '../components/ModalActividadDevengamiento';
+
+
 
 export async function action({ request }) {
+    const storedData = localStorage.getItem("datoSeleccionado");
+    console.log(storedData)
     const formData = await request.formData()
     const datos = Object.fromEntries(formData)
+    datos.idTipoActividad = storedData;
     console.log(datos);
+    const valorSeleccionado = FormularioNuevaActividad.valorSeleccionado;
+
     await agregarNuevaActividad(datos);
     return redirect("/");
+
 }
 
 function NuevaActividadDevengamiento() {
-    const [estadoModal1, cambiarEstadoModal1] = useState(false);
     return (
         <div>
             <Form method="post">
-              
+
                 <FormularioNuevaActividad />
-                
+
                 <div className="contenedor-button">
                     <input type="submit" className="button-form" value="Registrar" />
                 </div>

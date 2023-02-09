@@ -22,6 +22,7 @@ body {}
     background-image: url(./img/page-turner.svg);
     background-repeat: no-repeat;
     background-size: cover;
+
 }
 
 h1,
@@ -32,7 +33,14 @@ h3 {
     margin: 1rem 0 4rem 0;
     line-height: 1.2;
 }
+ p {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 2rem;
+    margin: 1rem 0 4rem 0;
+    line-height: 1.2;
 
+ }
 h1 {
     font-size: 3rem;
     margin: 0%;
@@ -45,7 +53,7 @@ h2 {
 h3 {
     font-family: 'Open Sans', sans-serif;
     color: #0076bd;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 a {
@@ -146,6 +154,14 @@ ol {
     color: var(--blanco);
 } 
 */
+
+.not-active-button { 
+    background-color: #737c85;
+    pointer-events: none; 
+    cursor: default; 
+    color: var(--blanco);
+} 
+
 
 .a-stay {
     font-family: 'Open Sans', sans-serif;
@@ -336,33 +352,44 @@ ol {
     font-weight: 900;
     color: #fa002a;
 }
-
+.table caption {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 3rem;
+    font-weight: 900; 
+    color: var(--blanco);
+    padding-bottom: 4rem;
+}
 .table {
+    
     font-family: 'Open Sans', sans-serif;
     font-size: 2rem;
     font-weight: 300;
-    width: 74%;
+    max-width: 64%;
+    
     height: 60%;
-    padding: 3rem 7rem 4.4rem;
+    padding: 3rem 7rem 2rem;
     border-radius: 2.4rem;
     background-color: var(--blanco);
     text-align: left;
 }
 
 .table-head {
+    
     font-family: 'Open Sans', sans-serif;
     font-size: 2rem;
     font-weight: 300;
 }
 
 .table-row th {
-    padding-right: 3rem;
+    padding-right: 4rem;
 }
 
 .table-row td {
-    padding: 2rem;
+    padding: 3rem;
+    
 }
 
 .contenedor-table {
-    padding: 12rem 6rem 8rem 6rem;
+    padding: 8rem 6rem 1rem 6rem;
 }

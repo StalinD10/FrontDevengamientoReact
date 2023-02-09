@@ -1,0 +1,100 @@
+import FormularioNuevoDocente from '../components/FormularioNuevoDocente';
+import { Form, redirect} from 'react-router-dom';
+import { useState, useEffect } from 'react';
+
+const idDocente = sessionStorage.getItem("idDocente");
+const token = sessionStorage.getItem("token");
+
+const useLoaderData = () => {
+    const [data, setData] = useState({});
+    const loader = async () => {
+        try {
+            const response1 = await fetch(`${import.meta.env.VITE_API_OBTENER_DOCENTE}/${idDocente}`, {
+                method: "GET",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                    'Authorization': `Bearer ${token}`
+                },
+            });
+            const data1 = await response1.json();
+
+            const response2 = await fetch(`${import.meta.env.VITE_API_OBTENER_DATOS_DEVENGAMIENTO}`, {
+                method: "GET",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                    'Authorization': `Bearer ${token}`
+                },
+            });
+            const data2 = await response2.json();
+
+            setData({ ...data1, ...data2 });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    useEffect(() => {
+        loader();
+    }, []);
+    return data;
+};
+
+export async function action({request}) {
+    const formData = await request.formData()
+    const datos = Object.fromEntries(formData)
+    console.log(datos);
+    await actualizarDocente(docenteId, datos);
+    return redirect("/datosDocente");
+}
+
+function EditarDocente() {
+    const data = useLoaderData();
+   
+    return (
+        <div>
+            <link
+                href="https://fonts.googleapis.com/css2?family=Lato:wght@400;900&family=Open+Sans:ital,wght@0,300;0,700;1,400&family=Playfair+Display:wght@700&family=Raleway:wght@300&family=Roboto:wght@400;700;900&display=swap"
+                rel="stylesheet"></link>
+            <header className="header">
+                <div className="contenedor">
+                    <div className="textos-header">
+                        <h1>
+                            Seguimiento de devengamiento a doctorados
+                        </h1>
+                        <p className="texto-universidad">
+                            UNIVERSIDAD CENTRAL DEL ECUADOR
+                        </p>
+                    </div>
+
+                </div>
+            </header>
+
+            <div>
+                <Form method="post">
+
+                    <FormularioNuevoDocente 
+                    data = {data}
+                    />
+
+                    <div className="contenedor-button">
+                        <input type="submit" className="button-form" value="Registrar" />
+                    </div>
+                </Form>
+                <footer>
+                    <div className="footer">
+                        <div className="contenedor">
+                            <div className="texto-footer">
+                                <p className="texto-copy">
+                                    Copyright &copy 2022 Universidad Central del Ecuador
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    )
+}
+
+export default EditarDocente
