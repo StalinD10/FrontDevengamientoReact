@@ -2,56 +2,30 @@
 import ModalActividadDevengamiento from './ModalLayout';
 import { useEffect, useState } from "react";
 
-const token = sessionStorage.getItem("token");
-const useLoaderData = () => {
-    const [data, setData] = useState({});
-    const loader = async () => {
-        try {
-            const response1 = await fetch(import.meta.env.VITE_API_OBTENER_DATOS_FACULTAD, {
-                method: "GET",
-                mode: "cors",
-                headers: {
-                    "Content-Type": "application/json",
-                    'Authorization': `Bearer ${token}`
-                },
-            });
-            const data1 = [await response1.json()];
-         
-            const response2 = await fetch(`${import.meta.env.VITE_API_OBTENER_DATOS_CARRERA}`, {
-                method: "GET",
-                mode: "cors",
-                headers: {
-                    "Content-Type": "application/json",
-                    'Authorization': `Bearer ${token}`
-                },
-            });
-            const data2 = [await response2.json()];
 
-            setData({ ...data1, ...data2 });
-        } catch (error) {
-            console.log(error);
-        }
-    };
-    useEffect(() => {
-        loader();
-    }, []);
-    return data;
-};
+const token = sessionStorage.getItem("token");
 
 
 function FormularioNuevaActividad({ }) {
-
-    const datos = useLoaderData();
-   
     const [estadoModal1, cambiarEstadoModal1] = useState(false);
     const [estadoModal2, cambiarEstadoModal2] = useState(false);
     const [estadoModal3, cambiarEstadoModal3] = useState(false);
     const [estadoModal4, cambiarEstadoModal4] = useState(false);
     const [estadoModal5, cambiarEstadoModal5] = useState(false);
+    const [estadoModal6, cambiarEstadoModal6] = useState(false);
     const [valorSelectModal, setValorSelectModal] = useState("");
     const [valorSelectUniversidad, setvalorSelectUniversidad] = useState("");
-    const [valorSelectFacultad, setvalorSelectFacultad] = useState("");
+    const [valorSelectFacultad, setvalorSelectFacultad] = useState(1)
     const [valorSelectCarrera, setvalorSelectCarrera] = useState("");
+    const [data, setData] = useState([]);
+    const [dataFacultades, setDataFacultades] = useState([]);
+    const [actividadID, setActividadID] = useState([]);
+    const [actividadDocente, setActividadDocente] = useState([]);
+    const [actividadInnovacion, setActividadInnovacion] = useState([]);
+    const [actividadInvestigadora, setActividadInvestigadora] = useState([]);
+    const [tipoActividad, setTipoActividad] = useState([]);
+    const [selectedOption, setselectedOption] = useState("");
+    const [valorOtraInstitucion, setvalorOtraInstitucion] = useState("");
 
 
     function handleChange(event) {
@@ -59,10 +33,120 @@ function FormularioNuevaActividad({ }) {
         setvalorSelectUniversidad(event.target.value);
         setvalorSelectFacultad(event.target.value);
         setvalorSelectCarrera(event.target.value);
+        setselectedOption(event.target.value);
     }
+    function handleChange2(event) {
+
+        setvalorOtraInstitucion(event.target.value)
+    }
+    let idFacultad = valorSelectFacultad;
+    localStorage.setItem("idFacultad", idFacultad);
+
+    useEffect(() => {
+        const peticion = async () => {
+            let idFacultad = localStorage.getItem("idFacultad")
+            try {
+
+                const response = await fetch(`${import.meta.env.VITE_API_OBTENER_DATOS_FACULTAD}/1`, {
+                    method: "GET",
+                    mode: "cors",
+                    headers: {
+                        "Content-Type": "application/json",
+                        'Authorization': `Bearer ${token}`
+                    },
+                });
+                const data1 = await response.json();
+                setDataFacultades(data1);
+
+                const response2 = await fetch(`${import.meta.env.VITE_API_OBTENER_DATOS_CARRERA}/${idFacultad}`, {
+                    method: "GET",
+                    mode: "cors",
+                    headers: {
+                        "Content-Type": "application/json",
+                        'Authorization': `Bearer ${token}`
+                    },
+                });
+                const data2 = await response2.json();
+                setData(data2);
+                setselectedOption(data2[0].value);
+
+                const response3 = await fetch(`${import.meta.env.VITE_API_OBTENER_DATOS_ACTIVIDAD_ID}`, {
+                    method: "GET",
+                    mode: "cors",
+                    headers: {
+                        "Content-Type": "application/json",
+                        'Authorization': `Bearer ${token}`
+                    },
+                });
+                const data3 = await response3.json();
+                setActividadID(data3);
+
+
+                const response4 = await fetch(`${import.meta.env.VITE_API_OBTENER_DATOS_ACTIVIDAD_DOCENTE}`, {
+                    method: "GET",
+                    mode: "cors",
+                    headers: {
+                        "Content-Type": "application/json",
+                        'Authorization': `Bearer ${token}`
+                    },
+                });
+                const data4 = await response4.json();
+                setActividadDocente(data4);
+
+
+                const response5 = await fetch(`${import.meta.env.VITE_API_OBTENER_DATOS_ACTIVIDAD_INVESTIGADORA}`, {
+                    method: "GET",
+                    mode: "cors",
+                    headers: {
+                        "Content-Type": "application/json",
+                        'Authorization': `Bearer ${token}`
+                    },
+                });
+                const data5 = await response5.json();
+                setActividadInvestigadora(data5);
+
+
+                const response6 = await fetch(`${import.meta.env.VITE_API_OBTENER_DATOS_ACTIVIDAD_INNOVACION}`, {
+                    method: "GET",
+                    mode: "cors",
+                    headers: {
+                        "Content-Type": "application/json",
+                        'Authorization': `Bearer ${token}`
+                    },
+                });
+                const data6 = await response6.json();
+                setActividadInnovacion(data6);
+
+                const response7 = await fetch(`${import.meta.env.VITE_API_OBTENER_DATOS_TIPO_ACTIVIDAD}`, {
+                    method: "GET",
+                    mode: "cors",
+                    headers: {
+                        "Content-Type": "application/json",
+                        'Authorization': `Bearer ${token}`
+                    },
+                });
+                const data7 = await response7.json();
+                setTipoActividad(data7);
+
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        peticion();
+        const intervalId = setInterval(peticion, 1000);
+        return () => clearInterval(intervalId);
+
+    }, []);
 
     const datoSeleccionado = valorSelectModal;
     localStorage.setItem("datoSeleccionado", datoSeleccionado);
+
+    const idCarreraSeleccionada = valorSelectCarrera;
+    localStorage.setItem("idCarrera", idCarreraSeleccionada);
+
+    const nombreOtraInstitucion = valorOtraInstitucion;
+    localStorage.setItem("nombreOtraInstitucion", nombreOtraInstitucion);
 
 
     function cambiarModal() {
@@ -86,10 +170,19 @@ function FormularioNuevaActividad({ }) {
     function cambiarModalInstitucion() {
         const valueSelectInstitucion = document.getElementById("select-tipoInstitucion").value;
         const selectInstitucion = document.getElementById("select-tipoInstitucion")
-        if (valueSelectInstitucion === "Universidad") {
+
+        if (valueSelectInstitucion === "0") {
             selectInstitucion.setAttribute("onChange", cambiarEstadoModal5(!estadoModal5))
+            localStorage.setItem("idUniversidad", 1)
+        }
+        if (valueSelectInstitucion == "1") {
+            selectInstitucion.setAttribute("onChange", cambiarEstadoModal6(!estadoModal6))
+            const nombreOtraInstitucion = valorOtraInstitucion;
+            localStorage.setItem("nombreOtraInstitucion", nombreOtraInstitucion);
         }
     }
+
+
     return (
         <div>
 
@@ -111,23 +204,24 @@ function FormularioNuevaActividad({ }) {
                             <label htmlFor="evidencias">Link de la evidencia</label>
                             <input type="text" id="evidencias" name="evidencias" className="evidencias" />
                             <label htmlFor="tipoActividad">Elija el tipo de actividad</label>
-                            <select id="select"
+                            <select id="select" 
                                 onChange={() => { cambiarModal() }}
 
                                 name="tipoActividad" className="tipoActividad">
-                                <option disabled> ** Seleccione **</option>
-                                <option className="opcion" value="1">Estructuras I + D</option>
-                                <option className="opcion" value="2">Actividad Docente</option>
-                                <option className="opcion" value="3">Actividad Investigadora</option>
-                                <option className="opcion" value="4">Innovacion</option>
+                                <option> ** Seleccione **</option>
+                                {tipoActividad.map((object) => (
+                                    <option key={object.id} value={object.id}>
+                                        {object.nombreTipoActividad}
+                                    </option>
+                                ))}
                             </select>
                             <label htmlFor="tipoInstitucion">Elija la institución donde va a realizar la actividad</label>
                             <select id="select-tipoInstitucion"
                                 onChange={() => { cambiarModalInstitucion() }}
                                 name="tipoInstitucion" className="tipoInstitucion">
-                                <option disabled> ** Seleccione **</option>
-                                <option className="opcion" value="Universidad">Universidad</option>
-                                <option className="opcion" value="Otra Institucion">Otra Institucion</option>
+                                <option > ** Seleccione **</option>
+                                <option className="opcion" value="0">Universidad</option>
+                                <option className="opcion" value="1">Otra Institucion</option>
 
                             </select>
                             <ModalActividadDevengamiento
@@ -140,17 +234,39 @@ function FormularioNuevaActividad({ }) {
                                         <option className="opcion" value="1" >Universidad Central del Ecuador</option>
                                     </select>
                                     <label htmlFor="select-universidad">Facultad</label>
-                                    <select id="select-facultad" value={valorSelectFacultad} onChange={handleChange}>
-                                        <option disabled> ** Seleccione ** </option>
-                                       
+                                    <select id="select-facultad" value={valorSelectFacultad} onChange={e => setvalorSelectFacultad(e.target.value)}>
+                                        <option > ** Seleccione ** </option>
+                                        {dataFacultades.map((object) => (
+                                            <option key={object.id} value={object.id}>
+                                                {object.nombreFacultad}
+                                            </option>
+                                        ))}
                                     </select>
-                                    <label htmlFor="select-universidad">Carrera</label>
-                                    <select id="select-carrera" value={valorSelectCarrera} onChange={handleChange}>
-                                        <option disabled> ** Seleccione ** </option>
+
+                                    <label htmlFor="select-carrera">Carrera</label>
+                                    <select id="select-carrera" value={valorSelectCarrera} onChange={e => setvalorSelectCarrera(e.target.value)}>
+                                        <option> ** Seleccione ** </option>
+                                        {data.map((object) => (
+                                            <option key={object.id} value={object.id}>
+                                                {object.nombreCarrera}
+                                            </option>
+                                        ))}
                                     </select>
                                     <div className="contenedor-button">
                                         <button onClick={() => cambiarEstadoModal5(false)} className="button-form">Aceptar</button>
                                     </div>
+                                </div>
+                            </ModalActividadDevengamiento>
+
+                            <ModalActividadDevengamiento
+                                estado={estadoModal6}
+                                cambiarEstado={cambiarEstadoModal6}>
+                                <div className="form">
+                                    <label htmlFor="nombreOtraInstitucion">Nombre de la otra Institucion</label>
+                                    <input id="nombreOtraInstitucion" className='nombreOtraInstitucion' type='text' value={valorOtraInstitucion} onChange={handleChange2} />
+                                </div>
+                                <div className="contenedor-button">
+                                    <button onClick={() => cambiarEstadoModal6(false)} className="button-form">Aceptar</button>
                                 </div>
                             </ModalActividadDevengamiento>
 
@@ -160,18 +276,12 @@ function FormularioNuevaActividad({ }) {
 
                                 <div className="form">
                                     <select id="select-actividadID" value={valorSelectModal} onChange={handleChange}>
-                                        <option disabled> ** Seleccione ** </option>
-                                        <option className="opcion" value="1">Grupos de Investigación</option>
-                                        <option className="opcion" value="2">Coifs- facultades</option>
-                                        <option className="opcion" value="3">INSTITUTOS</option>
-                                        <option className="opcion" value="4">LABORATORIOS</option>
-                                        <option className="opcion" value="5">REDES DE LA IES</option>
-                                        <option className="opcion" value="6">MAESTRIAS DE INVESTIGACION</option>
-                                        <option className="opcion" value="7">PROGRAMAS DE VINCULACION</option>
-                                        <option className="opcion" value="8">REDES NUEVAS</option>
-                                        <option className="opcion" value="9">OBSERVATORIOS</option>
-                                        <option className="opcion" value="10">APOYO Y GESTIÓN DIRECCIÓN DE DOCTORADOS E INVESTIGACIÓN</option>
-                                        <option className="opcion" value="11">APOYO EN PROCESOS DE INVESTIGACIÓN O DOCTORADOS UCE</option>
+                                        <option > ** Seleccione ** </option>
+                                        {actividadID.map((object) => (
+                                            <option key={object.id} value={object.id}>
+                                                {object.tipoActEstructura}
+                                            </option>
+                                        ))}
                                     </select>
                                     <div className="contenedor-button">
                                         <button onClick={() => cambiarEstadoModal1(false)} className="button-form">Aceptar</button>
@@ -185,16 +295,12 @@ function FormularioNuevaActividad({ }) {
                                 cambiarEstado={cambiarEstadoModal2}>
                                 <div className="form">
                                     <select id="select-actividad-docente" value={valorSelectModal} onChange={handleChange}>
-                                        <option disabled> ** Seleccione ** </option>
-                                        <option className="opcion" value="1">Pregrado Horas Clase</option>
-                                        <option className="opcion" value="2">POSTGRADO</option>
-                                        <option className="opcion" value="3">DIRECCION TESIS DE MAESTRIA</option>
-                                        <option className="opcion" value="4">DIRECCION TESIS DE DOCTORADO</option>
-                                        <option className="opcion" value="5">CREACION DE PROGRAMAS DE MAESTRIA</option>
-                                        <option className="opcion" value="6">CREACION DE PROGRAMAS DE DOCTORADO</option>
-                                        <option className="opcion" value="7">CREACION DE CARRERAS O REFORMAS DE CARRERA</option>
-                                        <option className="opcion" value="8">INTERCAMBIOS DOCENTES</option>
-                                        <option className="opcion" value="9">POSTDOCTORADOS</option>
+                                        <option > ** Seleccione ** </option>
+                                        {actividadDocente.map((object) => (
+                                            <option key={object.id} value={object.id}>
+                                                {object.tipoActDocente}
+                                            </option>
+                                        ))}
                                     </select>
                                     <div className="contenedor-button">
                                         <button onClick={() => cambiarEstadoModal2(false)} className="button-form">Aceptar</button>
@@ -208,18 +314,12 @@ function FormularioNuevaActividad({ }) {
                                 cambiarEstado={cambiarEstadoModal3}>
                                 <div className="form">
                                     <select id="select-actividad-investigadora" value={valorSelectModal} onChange={handleChange}>
-                                        <option disabled> ** Seleccione ** </option>
-                                        <option className="opcion" value="1">Proyectos con redes internacionales</option>
-                                        <option className="opcion" value="2">Proyectos en redes nacionales</option>
-                                        <option className="opcion" value="3">Proyectos multidisciplinares</option>
-                                        <option className="opcion" value="4">Proyectos por facultades</option>
-                                        <option className="opcion" value="5">PROYECTOS SEMILLA</option>
-                                        <option className="opcion" value="6">PROYECTOS DE VINCULACION COMO DIRECTOR</option>
-                                        <option className="opcion" value="7">ARTICULOS INDEXADOS EXTERNOS UCE</option>
-                                        <option className="opcion" value="8">ARTÍCULO INDEXADOS EN REVISTAS UCE</option>
-                                        <option className="opcion" value="9">ACTAS Y MEMORIAS EN CONGRESOS</option>
-                                        <option className="opcion" value="10">CAPÍTULOS DE LIBROS / LIBROS COMPLETOS CON ISBN</option>
-                                        <option className="opcion" value="11">Obra relevante</option>
+                                        <option > ** Seleccione ** </option>
+                                        {actividadInvestigadora.map((object) => (
+                                            <option key={object.id} value={object.id}>
+                                                {object.tipoActInvestigadora}
+                                            </option>
+                                        ))}
                                     </select>
                                     <div className="contenedor-button">
                                         <button onClick={() => cambiarEstadoModal3(false)} className="button-form">Aceptar</button>
@@ -233,10 +333,12 @@ function FormularioNuevaActividad({ }) {
                                 cambiarEstado={cambiarEstadoModal4} >
                                 <div className="form">
                                     <select id="select-actividad-innovacion" value={valorSelectModal} onChange={handleChange}>
-                                        <option disabled > ** Seleccione ** </option>
-                                        <option className="opcion" value="1">PATENTES</option>
-                                        <option className="opcion" value="2">PARTICIPACION EN PROGRAMAS O PROYECTOS INCIDENCIA CON ESTANCIAS GUBERNAMENTALES</option>
-                                        <option className="opcion" value="3">PARTICIPACION EN PROGRAMAS O PROYECTOS CON EMPRESA PRIVADA</option>
+                                        <option  > ** Seleccione ** </option>
+                                        {actividadInnovacion.map((object) => (
+                                            <option key={object.id} value={object.id}>
+                                                {object.tipoActInnovacion}
+                                            </option>
+                                        ))}
                                     </select>
                                     <div className="contenedor-button">
                                         <button onClick={() => cambiarEstadoModal4(false)} className="button-form">Aceptar</button>
