@@ -11,14 +11,16 @@ export async function action({ request }) {
     const idCarrera = localStorage.getItem("idCarrera");
     const nombreOtraInstitucion = localStorage.getItem("nombreOtraInstitucion");
     const idFacultad = localStorage.getItem("idFacultad");
+    const detalleDocente = localStorage.getItem("detalleDocente");
 
     const formData = await request.formData()
     const datos = Object.fromEntries(formData)
-    datos.idTipoActividad = storedData;
+    datos.idSubTipoActividad = storedData;
     datos.idUniversidad = idUniversidad;
     datos.idCarrera = idCarrera;
     datos.nombreOtraInstitucion = nombreOtraInstitucion;
     datos.idFacultad = idFacultad;
+    datos.detalleDocente = detalleDocente;
     console.log(datos);
     const valorSeleccionado = FormularioNuevaActividad.valorSeleccionado;
 

@@ -29,17 +29,7 @@ function Login() {
           <input type="submit" className="button-form" value="Iniciar Sesión" />
         </div>
       </Form>
-      <footer>
-        <div className="footer">
-          <div className="contenedor">
-            <div className="texto-footer">
-              <p className="texto-copy">
-                Copyright &copy 2022 Universidad Central del Ecuador
-              </p>
-            </div>
-          </div>
-        </div>
-      </footer>
+    
     </div>
 
   )

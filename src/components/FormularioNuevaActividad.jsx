@@ -1,7 +1,7 @@
 
 import ModalActividadDevengamiento from './ModalLayout';
 import { useEffect, useState } from "react";
-
+import Nav from "../components/Nav"
 
 const token = sessionStorage.getItem("token");
 
@@ -26,7 +26,7 @@ function FormularioNuevaActividad({ }) {
     const [tipoActividad, setTipoActividad] = useState([]);
     const [selectedOption, setselectedOption] = useState("");
     const [valorOtraInstitucion, setvalorOtraInstitucion] = useState("");
-
+    const [valorDetalleActividadDocente, setvalorDetalleActividadDocente] = useState("");
 
     function handleChange(event) {
         setValorSelectModal(event.target.value);
@@ -36,8 +36,13 @@ function FormularioNuevaActividad({ }) {
         setselectedOption(event.target.value);
     }
     function handleChange2(event) {
-
+        setvalorDetalleActividadDocente(event.target.value)
         setvalorOtraInstitucion(event.target.value)
+    }
+
+    function handleChange3(event) {
+        setvalorDetalleActividadDocente(event.target.value)
+
     }
     let idFacultad = valorSelectFacultad;
     localStorage.setItem("idFacultad", idFacultad);
@@ -148,6 +153,8 @@ function FormularioNuevaActividad({ }) {
     const nombreOtraInstitucion = valorOtraInstitucion;
     localStorage.setItem("nombreOtraInstitucion", nombreOtraInstitucion);
 
+    const detalleDocente = valorDetalleActividadDocente;
+    localStorage.setItem("detalleDocente", detalleDocente);
 
     function cambiarModal() {
         const valueSelect = document.getElementById("select").value;
@@ -158,9 +165,11 @@ function FormularioNuevaActividad({ }) {
         }
         if (valueSelect == "2") {
             select.setAttribute("onChange", cambiarEstadoModal2(!estadoModal2))
+
         }
         if (valueSelect == "3") {
             select.setAttribute("onChange", cambiarEstadoModal3(!estadoModal3))
+
         }
         if (valueSelect == "4") {
             select.setAttribute("onChange", cambiarEstadoModal4(!estadoModal4))
@@ -182,10 +191,9 @@ function FormularioNuevaActividad({ }) {
         }
     }
 
-
     return (
         <div>
-
+            <Nav />
             <link
                 href="https://fonts.googleapis.com/css2?family=Lato:wght@400;900&family=Open+Sans:ital,wght@0,300;0,700;1,400&family=Playfair+Display:wght@700&family=Raleway:wght@300&family=Roboto:wght@400;700;900&display=swap"
                 rel="stylesheet"></link>
@@ -204,7 +212,7 @@ function FormularioNuevaActividad({ }) {
                             <label htmlFor="evidencias">Link de la evidencia</label>
                             <input type="text" id="evidencias" name="evidencias" className="evidencias" />
                             <label htmlFor="tipoActividad">Elija el tipo de actividad</label>
-                            <select id="select" 
+                            <select id="select"
                                 onChange={() => { cambiarModal() }}
 
                                 name="tipoActividad" className="tipoActividad">
@@ -302,6 +310,8 @@ function FormularioNuevaActividad({ }) {
                                             </option>
                                         ))}
                                     </select>
+                                    <label htmlFor="valorDetalleActividadDocente">Detalle de la actividad</label>
+                                    <input id="valorDetalleActividadDocente" className='valorDetalleActividadDocente' type='text' value={valorDetalleActividadDocente} onChange={handleChange3} />
                                     <div className="contenedor-button">
                                         <button onClick={() => cambiarEstadoModal2(false)} className="button-form">Aceptar</button>
                                     </div>

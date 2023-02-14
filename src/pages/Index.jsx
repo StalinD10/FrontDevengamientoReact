@@ -1,4 +1,5 @@
 import image from "../img/uce.png"
+import Nav from "../components/Nav"
 function Index() {
     return (
 
@@ -6,6 +7,7 @@ function Index() {
             <link
                 href="https://fonts.googleapis.com/css2?family=Lato:wght@400;900&family=Open+Sans:ital,wght@0,300;0,700;1,400&family=Playfair+Display:wght@700&family=Raleway:wght@300&family=Roboto:wght@400;700;900&display=swap"
                 rel="stylesheet"></link>
+                <Nav/>
             <div className="contenido-body">
                 <div className="texto-body">
                     <h3 className="titulo-body">

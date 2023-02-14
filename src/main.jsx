@@ -13,15 +13,16 @@ import ModalActividadDevengamiento from './components/ModalLayout'
 import Login, {action as loginAction} from './pages/Login'
 import EditarDocente, { action as editarDocenteAction} from './pages/EditarDocente'
 import Index from './pages'
-
 const router = createBrowserRouter([
+ 
   {
     path: "/",
     element: <Layout />,
     children: [
       {
         index: true,
-        element: <Index />,
+        element: <Login />,
+        action: loginAction
       },
       {
         path: "/nuevoDocente",
@@ -42,11 +43,7 @@ const router = createBrowserRouter([
     ]
 
   },
-  {
-    path: "/iniciarSesion",
-    element: <Login />,
-    action: loginAction
-  },
+  
   {
     path: "/mostrarPlanes/:docenteId",
     element: <MostrarPlanes />,
