@@ -25,6 +25,18 @@ body {}
 
 }
 
+.title-swal{
+    font-size: 2.5rem !important;
+  }
+  .swal2-actions button {
+    font-size: 2rem !important;
+  }
+
+.my-swal-text {
+  font-size: 1.5rem !important;
+  text-align: center !important;
+}
+
 h1,
 h2,
 h3 {
@@ -83,7 +95,13 @@ img {
     color: var(--blanco);
     padding: 0;
 }
-
+.p-informacion{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 900;
+    font-size: 2.3rem;
+    color: var(--blanco);
+    padding: 0;
+}
 .textos p {
     margin: 0;
     line-height: 1;
@@ -105,7 +123,22 @@ img {
     background-color: #f4f4f4;
     max-height: 100%;
 }
-
+.button-cerrar{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 2rem;
+    transition: background-color 300ms;
+    color: var(--negro);
+    padding: 2rem;
+    background-color: #f4f4f4;
+    max-height: 100%;
+    border: none;
+    cursor: pointer;
+}
+.button-cerrar:hover{
+    background-color: var(--azul);
+    color: var(--blanco)
+}
 .contenedor-nav {
     background-color: var(--blanco);
     margin: 0;
@@ -142,14 +175,14 @@ ol {
     display: block;
 }
 
-/*
+
 .not-active { 
     background-color: #737c85;
     pointer-events: none; 
     cursor: default; 
     color: var(--blanco);
 } 
-*/
+
 
 .not-active-button { 
     background-color: #737c85;
@@ -387,5 +420,10 @@ ol {
 }
 
 .contenedor-table {
-    padding: 8rem 6rem 1rem 6rem;
+    padding: 10rem 6rem 3rem 6rem;
+}
+
+.contenedor-general{
+    display: flex;
+    flex-direction: column;
 }

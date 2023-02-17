@@ -11,9 +11,9 @@ function FormularioNuevoPlan() {
                     <h3>Ingresar el Nuevo Plan de Devengamiento</h3>
                     <div className="form">
                         <label htmlFor="fechaInicio"> Ingresar la fecha de Inicio del Plan</label>
-                        <input type="date" id="fechaInicio" name="fechaInicio" className="fechaInicio" />
-                        <label htmlFor="periodo"> Ingresar el periodo del Plan</label>
-                        <input type="text" id="periodo" name="periodo" className="periodo" placeholder="Ingrese el periodo del Plan" />
+                        <input type="date"   id="fechaInicio" name="fechaInicio" className="fechaInicio" />
+                        <label htmlFor="periodo"> Usted va a ingresar el periodo 2022-2023</label>
+                        <input type="hidden" id="periodo" value="2022-2023" name="periodo" className="periodo" placeholder="Ingrese el periodo del Plan" />
                     </div>
                 </div>
             </div>

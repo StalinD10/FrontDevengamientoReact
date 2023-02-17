@@ -1,18 +1,18 @@
 import FormularioNuevaActividad from "../components/FormularioNuevaActividad"
 import { Form, redirect } from "react-router-dom";
-import { agregarNuevaActividad } from "../api/nuevaActividad";
+import Swal from "sweetalert2";
 
-
+const token = sessionStorage.getItem("token");
 
 export async function action({ request }) {
     const storedData = localStorage.getItem("datoSeleccionado");
-    console.log(storedData)
+
     const idUniversidad = localStorage.getItem("idUniversidad");
     const idCarrera = localStorage.getItem("idCarrera");
     const nombreOtraInstitucion = localStorage.getItem("nombreOtraInstitucion");
     const idFacultad = localStorage.getItem("idFacultad");
     const detalleDocente = localStorage.getItem("detalleDocente");
-
+    const idPlan = sessionStorage.getItem("idPlan");
     const formData = await request.formData()
     const datos = Object.fromEntries(formData)
     datos.idSubTipoActividad = storedData;
@@ -21,13 +21,62 @@ export async function action({ request }) {
     datos.nombreOtraInstitucion = nombreOtraInstitucion;
     datos.idFacultad = idFacultad;
     datos.detalleDocente = detalleDocente;
+    datos.idPlan = idPlan;
     console.log(datos);
-    const valorSeleccionado = FormularioNuevaActividad.valorSeleccionado;
 
-    await agregarNuevaActividad(datos);
-    return redirect("/");
-
+    try {
+        const respuesta = await fetch(import.meta.env.VITE_API_AGREGAR_ACTIVIDAD, {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(datos),
+        });
+        const actividades = await respuesta.json();
+    
+    if (respuesta.ok) {
+        await Swal.fire({
+            title: 'Enviado',
+            text: 'El formulario ha sido enviado correctamente',
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Enviar otra respuesta'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/mostrarActividades";
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                setTimeout(function () {
+                    location.reload();
+                  }, 1);
+            }
+        });
+    } else {
+        await Swal.fire({
+            title: 'Error',
+            text: 'Ocurrió un error al enviar el formulario, debes llenar primero el PLAN DE DEVENGAMIENTO',
+            icon: 'error',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK'
+        });
+    }
+} catch (error) {
+    console.error(error);
+    await Swal.fire({
+        title: 'Error',
+        text: 'Ocurrió un error al enviar el formulario',
+        icon: 'error',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+    });
 }
+return null;
+}
+
 
 function NuevaActividadDevengamiento() {
     return (

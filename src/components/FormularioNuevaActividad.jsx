@@ -204,18 +204,18 @@ function FormularioNuevaActividad({ }) {
                     <div className="contenedor">
                         <div className="form">
                             <label htmlFor="fechaInicio"> Ingresar la fecha de Inicio de la Actividad</label>
-                            <input type="date" id="fechaInicio" name="fechaInicio" className="fechaInicio" />
+                            <input type="date" required={true} id="fechaInicio" name="fechaInicio" className="fechaInicio" />
                             <label htmlFor="fechaFin"> Ingresar la fecha de Finalización de la Actividad</label>
-                            <input type="date" id="fechaFin" name="fechaFin" className="fechaFin" />
+                            <input type="date" required={true} id="fechaFin" name="fechaFin" className="fechaFin" />
                             <label htmlFor="descripcion">Detalle la actividad</label>
-                            <input type="text" id="descripcion" name="descripcion" className="descripcion" />
+                            <input type="text" required={true} id="descripcion" name="descripcion" className="descripcion" />
                             <label htmlFor="evidencias">Link de la evidencia</label>
-                            <input type="text" id="evidencias" name="evidencias" className="evidencias" />
+                            <input type="text" required={true} id="evidencias" name="evidencias" className="evidencias" />
                             <label htmlFor="tipoActividad">Elija el tipo de actividad</label>
-                            <select id="select"
+                            <select id="select" required={true}
                                 onChange={() => { cambiarModal() }}
 
-                                name="tipoActividad" className="tipoActividad">
+                                name="idTipoActividad" className="tipoActividad">
                                 <option> ** Seleccione **</option>
                                 {tipoActividad.map((object) => (
                                     <option key={object.id} value={object.id}>
@@ -224,7 +224,7 @@ function FormularioNuevaActividad({ }) {
                                 ))}
                             </select>
                             <label htmlFor="tipoInstitucion">Elija la institución donde va a realizar la actividad</label>
-                            <select id="select-tipoInstitucion"
+                            <select id="select-tipoInstitucion" required={true}
                                 onChange={() => { cambiarModalInstitucion() }}
                                 name="tipoInstitucion" className="tipoInstitucion">
                                 <option > ** Seleccione **</option>
@@ -237,12 +237,12 @@ function FormularioNuevaActividad({ }) {
                                 cambiarEstado={cambiarEstadoModal5}>
                                 <div className="form">
                                     <label htmlFor="select-universidad">Universidad</label>
-                                    <select id="select-universidad" value={valorSelectUniversidad} onChange={handleChange}>
+                                    <select id="select-universidad"  value={valorSelectUniversidad} onChange={handleChange}>
                                         <option disabled > ** Seleccione ** </option>
                                         <option className="opcion" value="1" >Universidad Central del Ecuador</option>
                                     </select>
                                     <label htmlFor="select-universidad">Facultad</label>
-                                    <select id="select-facultad" value={valorSelectFacultad} onChange={e => setvalorSelectFacultad(e.target.value)}>
+                                    <select id="select-facultad"  value={valorSelectFacultad} onChange={e => setvalorSelectFacultad(e.target.value)}>
                                         <option > ** Seleccione ** </option>
                                         {dataFacultades.map((object) => (
                                             <option key={object.id} value={object.id}>

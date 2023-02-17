@@ -12,8 +12,8 @@ function FormularioLogin() {
                     <div className="form-card">
                         <h3>Ingresar los datos del docente</h3>
                         <div className="form">
-                            <input type="text" id="username" name="username" minLength="10" maxLength="10"  className="username" placeholder="Usuario" />
-                            <input type="password" id="password" name="password" className="password" placeholder="Contraseña" />
+                            <input type="text" required={true} id="username" name="username" minLength="10" maxLength="10"  className="username" placeholder="Usuario" />
+                            <input type="password" required={true} id="password" name="password" className="password" placeholder="Contraseña" />
 
                         </div>
                     </div>

@@ -6,13 +6,15 @@ import Layout from "./components/Layout"
 import NuevoDocente, { action as nuevoDocenteAction } from "./pages/NuevoDocente"
 import NuevoPlanDevengamiento, { action as nuevoPlanAction } from './pages/NuevoPlanDevengamiento'
 import NuevaActividadDevengamiento, { action as nuevaActividadAction } from './pages/NuevaActividadDevengamiento'
-import MostrarPlanes, {loader as loaderPlanes}  from './components/MostrarPlanes'
+import MostrarPlanes  from './components/MostrarPlanes'
 import MostrarActividades from './components/MostrarActividades'
 import MostrarDatosDocente from './components/MostrarDatosDocente'
 import ModalActividadDevengamiento from './components/ModalLayout'
 import Login, {action as loginAction} from './pages/Login'
 import EditarDocente, { action as editarDocenteAction} from './pages/EditarDocente'
-import Index from './pages'
+import TiempoDevengamiento, {action as actionTiempoDevengamiento} from './pages/TiempoDevengamiento'
+import FiniquitoForm from './components/FiniquitoForm'
+import Index from './pages/Index'
 const router = createBrowserRouter([
  
   {
@@ -25,14 +27,27 @@ const router = createBrowserRouter([
         action: loginAction
       },
       {
+        path: "/index",
+        element: <Index/>
+      },
+      {
         path: "/nuevoDocente",
         element: <NuevoDocente />,
         action: nuevoDocenteAction
       },
       {
+        path: "/solicitarFiniquito/:docenteId",
+        element: <FiniquitoForm />
+      },
+      {
         path: "/planDevengamiento",
         element: <NuevoPlanDevengamiento />,
         action: nuevoPlanAction
+      },
+      {
+        path: "/tiempoDevengamiento",
+        element: <TiempoDevengamiento />,
+        action: actionTiempoDevengamiento
       },
       {
         path: "/nuevaActividad",
@@ -45,9 +60,9 @@ const router = createBrowserRouter([
   },
   
   {
-    path: "/mostrarPlanes/:docenteId",
+    path: "/mostrarPlanes",
     element: <MostrarPlanes />,
-    loader: loaderPlanes
+   
   },
   {
     path: "/mostrarActividades",

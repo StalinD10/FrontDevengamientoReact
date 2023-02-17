@@ -12,7 +12,7 @@ export async function action({ request }) {
     <p> Error </p>
   } else {
 
-    return redirect("/");
+    return redirect("/index");
   }
 }
 

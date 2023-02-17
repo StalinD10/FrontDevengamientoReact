@@ -2,15 +2,14 @@ import FormularioNuevoPlan from "../components/FormularioNuevoPlan"
 import { Form, redirect } from "react-router-dom";
 import { agregarPlanDevengamiento } from "../api/nuevoPlanDevengamiento";
 
-const idDocente= sessionStorage.getItem("idDocente");
+const idDocente = sessionStorage.getItem("idDocente");
 
 export async function action({ request }) {
     const formData = await request.formData()
     const datos = Object.fromEntries(formData)
-    
-    console.log(datos);
+    console.log(datos)
     await agregarPlanDevengamiento(datos);
-    return redirect("/nuevaActividad");
+   return redirect("/nuevaActividad")
 }
 function NuevoPlanDevengamiento() {
     return (
