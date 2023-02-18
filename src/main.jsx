@@ -15,10 +15,9 @@ import EditarDocente, { action as editarDocenteAction} from './pages/EditarDocen
 import TiempoDevengamiento, {action as actionTiempoDevengamiento} from './pages/TiempoDevengamiento'
 import FiniquitoForm from './components/FiniquitoForm'
 import Index from './pages/Index'
-const router = createBrowserRouter([
- 
-  {
-    path: "/",
+
+const router = createBrowserRouter([{
+    path: "/FrontDevengamientoReact/",
     element: <Layout />,
     children: [
       {
@@ -27,30 +26,30 @@ const router = createBrowserRouter([
         action: loginAction
       },
       {
-        path: "/index",
+        path: "/FrontDevengamientoReact/index",
         element: <Index/>
       },
       {
-        path: "/nuevoDocente",
+        path: "/FrontDevengamientoReact/nuevoDocente",
         element: <NuevoDocente />,
         action: nuevoDocenteAction
       },
       {
-        path: "/solicitarFiniquito/:docenteId",
+        path: "/FrontDevengamientoReact/solicitarFiniquito/:docenteId",
         element: <FiniquitoForm />
       },
       {
-        path: "/planDevengamiento",
+        path: "/FrontDevengamientoReact/planDevengamiento",
         element: <NuevoPlanDevengamiento />,
         action: nuevoPlanAction
       },
       {
-        path: "/tiempoDevengamiento",
+        path: "/FrontDevengamientoReact/tiempoDevengamiento",
         element: <TiempoDevengamiento />,
         action: actionTiempoDevengamiento
       },
       {
-        path: "/nuevaActividad",
+        path: "/FrontDevengamientoReact/nuevaActividad",
         element: <NuevaActividadDevengamiento />,
         action: nuevaActividadAction
       }
@@ -60,26 +59,26 @@ const router = createBrowserRouter([
   },
   
   {
-    path: "/mostrarPlanes",
+    path: "/FrontDevengamientoReact/mostrarPlanes",
     element: <MostrarPlanes />,
    
   },
   {
-    path: "/mostrarActividades",
+    path: "/FrontDevengamientoReact/mostrarActividades",
     element: <MostrarActividades />
     
   },
   {
-    path: "/datosDocente/:docenteId/",
+    path: "/FrontDevengamientoReact/datosDocente/:docenteId/",
     element: <MostrarDatosDocente />,
     
   },
   {
-    path: "/modalActividad",
+    path: "/FrontDevengamientoReact/modalActividad",
     element: <ModalActividadDevengamiento />
   },
   {
-    path: "/docente/:docenteId/editar",
+    path: "/FrontDevengamientoReact/docente/:docenteId/editar",
     element: <EditarDocente />,
     action: editarDocenteAction
   }
@@ -88,6 +87,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider basename="/FrontDevengamientoReact/" router={router} />
   </React.StrictMode>,
 )

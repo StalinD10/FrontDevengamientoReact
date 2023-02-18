@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://stalind10.github.io/FrontDevengamientoReact/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
