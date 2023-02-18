@@ -31,7 +31,7 @@ const router = createBrowserRouter([{
       element: <Index />
     },
     {      
-      path: "/FrontDevengamientoReact/plnaDevengamiento",
+      path: "/FrontDevengamientoReact/planDevengamiento",
       element: <NuevoPlanDevengamiento />,
       action: nuevoPlanAction
     },
