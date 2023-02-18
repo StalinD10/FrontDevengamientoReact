@@ -1,0 +1,18 @@
+# gh-pages
+
+# Ruta base
+/FrontDevengamientoReact/
+
+# Páginas
+/FrontDevengamientoReact/
+/FrontDevengamientoReact/index
+/FrontDevengamientoReact/devengamiento
+/FrontDevengamientoReact/nuevoDocente
+/FrontDevengamientoReact/solicitarFiniquito
+/FrontDevengamientoReact/tiempoDevengamiento
+/FrontDevengamientoReact/nuevaActividad
+/FrontDevengamientoReact/mostrarPlanes
+/FrontDevengamientoReact/mostrarActividades
+/FrontDevengamientoReact/datosDocente
+/FrontDevengamientoReact/modalActividad
+/FrontDevengamientoReact/docente/editar

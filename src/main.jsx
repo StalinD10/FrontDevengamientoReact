@@ -25,9 +25,15 @@ const router = createBrowserRouter([{
       element: <Login />,
       action: loginAction
     },
+    
     {
       path: "/FrontDevengamientoReact/index",
       element: <Index />
+    },
+    {      
+      path: "/FrontDevengamientoReact/plnaDevengamiento",
+      element: <NuevoPlanDevengamiento />,
+      action: nuevoPlanAction
     },
     {
       path: "/FrontDevengamientoReact/nuevoDocente",
@@ -38,11 +44,7 @@ const router = createBrowserRouter([{
       path: "/FrontDevengamientoReact/solicitarFiniquito/:docenteId",
       element: <FiniquitoForm />
     },
-    {
-      path: "/FrontDevengamientoReact/planDevengamiento",
-      element: <NuevoPlanDevengamiento />,
-      action: nuevoPlanAction
-    },
+    
     {
       path: "/FrontDevengamientoReact/tiempoDevengamiento",
       element: <TiempoDevengamiento />,
@@ -52,11 +54,11 @@ const router = createBrowserRouter([{
       path: "/FrontDevengamientoReact/nuevaActividad",
       element: <NuevaActividadDevengamiento />,
       action: nuevaActividadAction
-    }
+    },
+    
   ]
 
 },
-
 {
   path: "/FrontDevengamientoReact/mostrarPlanes",
   element: <MostrarPlanes />,
@@ -86,6 +88,6 @@ const router = createBrowserRouter([{
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider basename="/FrontDevengamientoReact/" router={router} />
+    <RouterProvider  router={router} />
   </React.StrictMode>,
 )
