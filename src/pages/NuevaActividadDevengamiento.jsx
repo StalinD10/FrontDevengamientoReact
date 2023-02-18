@@ -48,7 +48,7 @@ export async function action({ request }) {
             cancelButtonText: 'Enviar otra respuesta'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "/mostrarActividades";
+                window.location.href = "/FrontDevengamientoReact/mostrarActividades";
             } else if (result.dismiss === Swal.DismissReason.cancel) {
                 setTimeout(function () {
                     location.reload();

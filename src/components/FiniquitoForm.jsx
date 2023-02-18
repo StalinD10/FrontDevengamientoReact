@@ -27,7 +27,7 @@ function FiniquitoForm() {
                 if (response1.ok){
                 localStorage.clear();
                 sessionStorage.clear();
-                window.location.href = "/";
+                window.location.href = "/FrontDevengamientoReact";
                 }
 
             } catch (error) {

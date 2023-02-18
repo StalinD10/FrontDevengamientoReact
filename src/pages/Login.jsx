@@ -12,7 +12,7 @@ export async function action({ request }) {
     <p> Error </p>
   } else {
 
-    return redirect("/index");
+    return redirect("/FrontDevengamientoReact/index");
   }
 }
 

@@ -9,7 +9,7 @@ export async function action({ request }) {
     const datos = Object.fromEntries(formData)
     console.log(datos)
     await agregarPlanDevengamiento(datos);
-   return redirect("/nuevaActividad")
+   return redirect("/FrontDevengamientoReact/nuevaActividad")
 }
 function NuevoPlanDevengamiento() {
     return (

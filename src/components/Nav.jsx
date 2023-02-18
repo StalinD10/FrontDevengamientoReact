@@ -39,11 +39,11 @@ function Nav({ children }) {
     function cerrarSesion() {
         localStorage.clear();
         sessionStorage.clear();
-        window.location.href = "/";
+        window.location.href = "/FrontDevengamientoReact";
     }
 
     function redirigir() {
-        window.location.href = "/planDevengamiento";
+        window.location.href = "/FrontDevengamientoReact/planDevengamiento";
     }
 
 
@@ -53,31 +53,31 @@ function Nav({ children }) {
             <div className="contenedor-nav">
                 <ul className="nav">
                     <li>
-                        <Link className={`${location.pathname === "/datosDocente/:docenteId/" ? "a-stay" : "link-a"} `} to="/datosDocente/${id}"> Datos Docente </Link>
+                        <Link className={`${location.pathname === "/FrontDevengamientoReact/datosDocente/:docenteId/" ? "a-stay" : "link-a"} `} to="/FrontDevengamientoReact/datosDocente/${id}"> Datos Docente </Link>
 
                     </li>
                     <li>
-                        <Link className={`${location.pathname === "/planDevengamiento" ? "a-stay" : "link-a"}  `} > Plan devengamiento </Link>
+                        <Link className={`${location.pathname === "/FrontDevengamientoReact/planDevengamiento" ? "a-stay" : "link-a"}  `} > Plan devengamiento </Link>
                         <ul>
                             <li>
                                 <button disabled={datos.length !== 0} id="buttonInsertarPlan" className="button-cerrar" onClick={redirigir}> Insertar Plan de Devengamiento</button>
                             </li>
                             <li>
-                                <Link className={`${location.pathname === "/mostrarPlanes" ? "a-stay" : "link-a"} `} to="/mostrarPlanes"> Mostrar Planes </Link>
+                                <Link className={`${location.pathname === "/FrontDevengamientoReact/mostrarPlanes" ? "a-stay" : "link-a"} `} to="/FrontDevengamientoReact/mostrarPlanes"> Mostrar Planes </Link>
                             </li>
                             <li>
-                                <Link className={`${location.pathname === "/solicitarFiniquito/${id}" ? "a-stay" : "link-a"} `} to="/solicitarFiniquito/${id}"> Solicitar Finiquito </Link>
+                                <Link className={`${location.pathname === "/FrontDevengamientoReact/solicitarFiniquito/${id}" ? "a-stay" : "link-a"} `} to="/FrontDevengamientoReact/solicitarFiniquito/${id}"> Solicitar Finiquito </Link>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <Link className={`${location.pathname === "/nuevaActividad" ? "a-stay" : "link-a"} `} >Actividades de Devengamiento </Link>
+                        <Link className={`${location.pathname === "/FrontDevengamientoReact/nuevaActividad" ? "a-stay" : "link-a"} `} >Actividades de Devengamiento </Link>
                         <ul>
                             <li>
-                                <Link className={`${location.pathname === "/nuevaActividad" ? "a-stay" : "link-a"} `} to="/nuevaActividad">Agregar Actividad</Link>
+                                <Link className={`${location.pathname === "/FrontDevengamientoReact/nuevaActividad" ? "a-stay" : "link-a"} `} to="/FrontDevengamientoReact/nuevaActividad">Agregar Actividad</Link>
                             </li>
                             <li>
-                                <Link className={`${location.pathname === "/mostrarActividades" ? "a-stay" : "link-a"} `} to="/mostrarActividades">Mostrar Actividades </Link>
+                                <Link className={`${location.pathname === "/FrontDevengamientoReact/mostrarActividades" ? "a-stay" : "link-a"} `} to="/FrontDevengamientoReact/mostrarActividades">Mostrar Actividades </Link>
                             </li>
 
                         </ul>

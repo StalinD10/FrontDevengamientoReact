@@ -7,7 +7,7 @@ export async function action({ request }) {
     const datos = Object.fromEntries(formData)
     console.log(datosjajaj);
     await agregarDocente(datos);
-    return redirect("/");
+    return redirect("/FrontDevengamientoReact");
 }
 
 function NuevoDocente() {

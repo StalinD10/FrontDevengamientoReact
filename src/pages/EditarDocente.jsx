@@ -45,7 +45,7 @@ export async function action({request}) {
     const datos = Object.fromEntries(formData)
     console.log(datos);
     await actualizarDocente(docenteId, datos);
-    return redirect("/datosDocente");
+    return redirect("/FrontDevengamientoReact/datosDocente");
 }
 
 function EditarDocente() {

@@ -151,7 +151,7 @@ function MostrarDatosDocente() {
 
                                         </td>
                                         <td>
-                                            <button id="btnEditarDocentes" disabled={datos.tiempoDevengamiento || datos.enlaceContratoAdenda === null} onClick={() => navigate(`/tiempoDevengamiento`)} className='button-form '>Editar</button>
+                                            <button id="btnEditarDocentes" disabled={datos.tiempoDevengamiento || datos.enlaceContratoAdenda === null} onClick={() => navigate(`/FrontDevengamientoReact/tiempoDevengamiento`)} className='button-form '>Editar</button>
                                         </td>
 
                                     </tr>

@@ -6,7 +6,7 @@ export async function action({ request }) {
   const formData = await request.formData()
   const datos = Object.fromEntries(formData)
    await agregarTiempoDevengamiento(datos);
-  return redirect("/datosDocente/${id}")
+  return redirect("/FrontDevengamientoReact/datosDocente/${id}")
 }
 
 function TiempoDevengamiento() {
