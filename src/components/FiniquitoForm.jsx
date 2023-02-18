@@ -1,40 +1,46 @@
 import Nav from "./Nav";
 import { useState } from "react";
-
+import Swal from "sweetalert2";
 const token = sessionStorage.getItem("token");
 const idDocente = sessionStorage.getItem("idDocente");
 
 
 function FiniquitoForm() {
     const [valorSelectFiniquito, setValorSelectFiniquito] = useState(" ");
-    
+
     function handleChange(event) {
         setValorSelectFiniquito(event.target.value);
     }
 
-            const enviarFiniquito = async () => {
-            try {
-                const response1 = await fetch(`${import.meta.env.VITE_API_EVIAR_SOLICITUD_FINIQUITO}/${idDocente}`, {
-                    method: "POST",
-                    mode: "cors",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    },
-                    body: JSON.stringify(valorSelectFiniquito),
-                });
-                await response1.json()
-                if (response1.ok){
+    const enviarFiniquito = async () => {
+        try {
+            const response1 = await fetch(`${import.meta.env.VITE_API_EVIAR_SOLICITUD_FINIQUITO}/${idDocente}`, {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(valorSelectFiniquito),
+            });
+            await response1.json()
+            if (response1.ok) {
                 localStorage.clear();
                 sessionStorage.clear();
                 window.location.href = "/FrontDevengamientoReact";
-                }
-
-            } catch (error) {
-                console.log(error);
+            } else {
+                await Swal.fire({
+                    title: "Error en la solicitud de finiquito",
+                    text: "Ha ocurrido un error al intentar enviar la solicitud",
+                    icon: "error",
+                    confirmButtonText: "Aceptar",
+                });
             }
-           
-        };
+        } catch (error) {
+            console.log(error);
+        }
+
+    };
 
     return (
         <div>
@@ -47,7 +53,7 @@ function FiniquitoForm() {
                     <h3>Solicitud de finiquito</h3>
                     <div className="contenedor">
                         <div className="form">
-                            
+
                             <p>Cuando se solicita un finiquito, no se podrá ya registrar mas periodos ni actividades de devengamiento</p>
                             <p>Ten en cuenta que una vez solicitado el finiquito, se revisará todos los planes  y actividades registradas.</p>
                             <label htmlFor="selectFiniquito"> ¿Realizar la solicitud de finiquito?</label>
@@ -56,7 +62,7 @@ function FiniquitoForm() {
                                 <option className="opcion" value="true" >Enviar Solitud</option>
                             </select>
                             <input type="submit" onClick={enviarFiniquito} className="button-form" value="Enviar Solicitud" />
-                           
+
                         </div>
                     </div>
                 </div>

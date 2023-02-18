@@ -36,10 +36,12 @@ function Nav({ children }) {
     const buttonRef = useRef("buttonInsertarPlan");
     const location = useLocation();
     const datos = useLoaderData();
+
+
     function cerrarSesion() {
         localStorage.clear();
         sessionStorage.clear();
-        window.location.href = "/FrontDevengamientoReact";
+        window.location.href = "/FrontDevengamientoReact/";
     }
 
     function redirigir() {
