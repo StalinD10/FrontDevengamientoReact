@@ -21,5 +21,4 @@ function FormularioNuevoPlan() {
         </div>
     )
 }
-
 export default FormularioNuevoPlan
